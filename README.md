@@ -1,15 +1,15 @@
 # Calculadora EDTS en Python
 
-Este proyecto implementa una **calculadora con análisis léxico, sintactico, semantico e interpretacion** de expresiones matematicas simples, usando el enfoque EDTS.  
+Este proyecto implementa una calculadora con analisis lexico, sintactico, semantico e interpretacion de expresiones matematicas simples, usando el enfoque EDTS.  
 
 El sistema analiza, construye y evalúa árboles de sintaxis abstracta (**AST**) para expresiones aritméticas y asignaciones de variables, mostrando además el árbol en formato ASCII.
 
 
-## Caracteristicas principales
+## Caracteristicas
 
 - Analisis lexico (Lexer): Divide la entrada en tokens (numeros, identificadores, operadores, parentesis, etc.).  
-- Análisis sintactico (Parser LL(1)): Construye un **árbol de sintaxis abstracta (AST)** según una gramatica definida.  
-- Evaluación (Evaluator): Calcula el resultado de las expresiones y maneja una **tabla de símbolos** para almacenar variables.  
+- Análisis sintactico (Parser LL(1)): Construye un árbol de sintaxis abstracta (AST) según una gramatica definida.  
+- Evaluación (Evaluator): Calcula el resultado de las expresiones y maneja una tabla de símbolos para almacenar variables.  
 - Visualización:  
   - Impresión del AST decorado con valores.
   - Representación del árbol en formato ASCII.
@@ -72,8 +72,6 @@ python edts.py
 
 
 ## Ejemplos de uso
-
-### Expresiones aritméticas
 
 ```
 >>> 2 + 3 * 4
