@@ -13,6 +13,22 @@ El sistema analiza, construye y evalúa árboles de sintaxis abstracta (**AST**)
 - Visualización:  
   - Impresión del AST decorado con valores.
   - Representación del árbol en formato ASCII.
+
+## Gramatica soportada
+
+La gramática LL(1) implementada es:
+
+```
+Lista  → Stmt (';' Stmt)* EOF
+Stmt   → ID '=' E | E
+E      → T E'
+E'     → '+' T E' | '-' T E' | ε
+T      → F T'
+T'     → '*' F T' | '/' F T' | (F T') [multiplicación implicita] | ε
+F      → '+' F | '-' F | '(' E ')' | NUM | ID
+```
+
+---
  
 ## CONJUNTOS:
     Primeros(E) = { '(', num, id }
@@ -21,12 +37,30 @@ El sistema analiza, construye y evalúa árboles de sintaxis abstracta (**AST**)
     Primeros(T') = { '*', '/', ε }
     Primeros(F) = { '(', num, id }
     Primeros(Stmt) = { id, '(', num }
+    
     Siguientes(E) = { ')', ';', EOF }
     Siguientes(E') = { ')', ';', EOF }
     Siguientes(T) = { '+', '-', ')', ';', EOF }
     Siguientes(T') = { '+', '-', ')', ';', EOF }
     Siguientes(F) = { '*', '/', '+', '-', ')', ';', EOF }
     Siguientes(Stmt) = { ';', EOF }
+    
+    Prediccion(Stmt → id '=' E) = { id } (desambiguado en implementación comprobando que el próximo token sea =)
+    Prediccion(Stmt → E) = { +, -, (, num, id }
+    Prediccion(E → T E') = { +, -, (, num, id }
+    Prediccion(E' → '+' T E') = { + }
+    Prediccion(E' → '-' T E') = { - }
+    Prediccion(E' → ε) = { ), ;, EOF }
+    Prediccion(T → F T') = { +, -, (, num, id }
+    Prediccion(T' → '*' F T') = { * }
+    Prediccion(T' → '/' F T') = { / }
+    Prediccion(T' → IMPL F T') = { (, num, id } (cuando aparece inicio de otro F)
+    Prediccion(T' → ε) = { +, -, ), ;, EOF }
+    Prediccion(F → '+' F) = { + }
+    Prediccion(F → '-' F) = { - }
+    Prediccion(F → '(' E ')') = { ( }
+    Prediccion(F → num) = { num }
+    Prediccion(F → id) = { id }
 
 
 ## Ejecución
@@ -75,22 +109,6 @@ Resultado: 10.0
         └── Num(2.0)
 Tabla de símbolos: {x=10.0}
 ```
-
-## Gramatica soportada
-
-La gramática LL(1) implementada es:
-
-```
-Lista  → Stmt (';' Stmt)* EOF
-Stmt   → ID '=' E | E
-E      → T E'
-E'     → '+' T E' | '-' T E' | ε
-T      → F T'
-T'     → '*' F T' | '/' F T' | (F T') [multiplicación implicita] | ε
-F      → '+' F | '-' F | '(' E ')' | NUM | ID
-```
-
----
 
 ## Estructura del codigo
 
