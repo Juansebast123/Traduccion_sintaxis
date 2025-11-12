@@ -29,6 +29,12 @@ F      → '+' F | '-' F | '(' E ')' | NUM | ID
 ```
 
 ---
+
+## Atributos:
+  - `Stmt` : .ast -> AST que representa toda la sentencia (asignación o expresión).
+  - `E`, `T`, `F` : .ast -> AST del subárbol que representa la expresión aritmética (suma, producto, factor, etc.).
+  - `E'`, `T'` : .inh, .ast -> `.inh` (heredado): AST parcial acumulado; `.ast` (sintetizado): resultado final del subárbol con operaciones aplicadas.
+  - `Num`, `Var`, `Assign`, `Binary`: .val -> Valor decorado (resultado de evaluación) asociado al nodo AST.
  
 ## CONJUNTOS:
     Primeros(E) = { '(', num, id }
