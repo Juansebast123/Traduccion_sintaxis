@@ -12,7 +12,21 @@ El sistema analiza, construye y evalúa árboles de sintaxis abstracta (**AST**)
 - Evaluación (Evaluator): Calcula el resultado de las expresiones y maneja una **tabla de símbolos** para almacenar variables.  
 - Visualización:  
   - Impresión del AST decorado con valores.
-  - Representación del árbol en formato ASCII.  
+  - Representación del árbol en formato ASCII.
+ 
+## CONJUNTOS:
+    Primeros(E) = { '(', num, id }
+    Primeros(E') = { '+', '-', ε }
+    Primeros(T) = { '(', num, id }
+    Primeros(T') = { '*', '/', ε }
+    Primeros(F) = { '(', num, id }
+    Primeros(Stmt) = { id, '(', num }
+    Siguientes(E) = { ')', ';', EOF }
+    Siguientes(E') = { ')', ';', EOF }
+    Siguientes(T) = { '+', '-', ')', ';', EOF }
+    Siguientes(T') = { '+', '-', ')', ';', EOF }
+    Siguientes(F) = { '*', '/', '+', '-', ')', ';', EOF }
+    Siguientes(Stmt) = { ';', EOF }
 
 
 ## Ejecución
