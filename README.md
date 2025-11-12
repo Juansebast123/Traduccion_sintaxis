@@ -1,43 +1,27 @@
 # Calculadora EDTS en Python
 
-Este proyecto implementa una **calculadora con análisis léxico, sintactico, semantico e interpretacion** de expresiones matematicas simples, usando el enfoque **EDTS (Estructuras de Datos y Técnicas de Software)**.  
+Este proyecto implementa una **calculadora con análisis léxico, sintactico, semantico e interpretacion** de expresiones matematicas simples, usando el enfoque EDTS.  
 
 El sistema analiza, construye y evalúa árboles de sintaxis abstracta (**AST**) para expresiones aritméticas y asignaciones de variables, mostrando además el árbol en formato ASCII.
 
----
 
 ## Caracteristicas principales
 
-- **Análisis lexico (Lexer):** Divide la entrada en tokens (numeros, identificadores, operadores, parentesis, etc.).  
-- **Análisis sintactico (Parser LL(1)):** Construye un **árbol de sintaxis abstracta (AST)** según una gramatica definida.  
-- **Evaluación (Evaluator):** Calcula el resultado de las expresiones y maneja una **tabla de símbolos** para almacenar variables.  
-- **Visualización:**  
+- Analisis lexico (Lexer): Divide la entrada en tokens (numeros, identificadores, operadores, parentesis, etc.).  
+- Análisis sintactico (Parser LL(1)): Construye un **árbol de sintaxis abstracta (AST)** según una gramatica definida.  
+- Evaluación (Evaluator): Calcula el resultado de las expresiones y maneja una **tabla de símbolos** para almacenar variables.  
+- Visualización:  
   - Impresión del AST decorado con valores.
   - Representación del árbol en formato ASCII.  
 
----
-
-## Requisitos
-
-- Python **3.8** o superior.
-- No requiere librerías externas (usa únicamente módulos estándar como `dataclasses` y `typing`).
-
----
 
 ## Ejecución
 
-1. Guarda el archivo con el nombre, por ejemplo, `edts.py`.
-2. Abre una terminal en la carpeta donde se encuentra el archivo.
-3. Ejecuta el programa con:
-
-```bash
 python edts.py
-```
 
 4. Escribe expresiones o asignaciones.  
    Para salir, presiona **Enter** en blanco o escribe `exit`.
 
----
 
 ## Ejemplos de uso
 
@@ -77,22 +61,6 @@ Resultado: 10.0
         └── Num(2.0)
 Tabla de símbolos: {x=10.0}
 ```
-
-### Uso de variables
-
-```
->>> x + 3
-Resultado: 13.0
-```
-
-### Multiplicación implícita
-
-```
->>> 2(3 + 4)
-Resultado: 14.0
-```
-
----
 
 ## Gramatica soportada
 
